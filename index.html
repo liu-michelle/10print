@@ -5,7 +5,7 @@
     <title>10PRINT Remix</title>
     <style>
       body {
-        display: flex;
+        position: flex;
         margin: 0;
         background: black;
         justify-content: center;
@@ -20,9 +20,13 @@
         font-family: monospace;
         justify-content: center;
         align-items: center;
-        font-size: 45px;
+        font-size: 40px;
       }
-
+      
+      #header {
+        position: flex;
+      }
+      
       #terminal {
         width: 600px;
         height: 400px;
@@ -82,7 +86,7 @@
 
         const space = document.createElement("span")
         space.className = "space"
-        space.textContent = ""
+        space.textContent = "_"
 
         const terminal = document.getElementById("terminal")
         terminal.appendChild(span)
