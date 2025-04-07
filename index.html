@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>10PRINT Remix</title>
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        background: black;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Courier New' monospace;
+        text-shadow: green 2px 2px;
+      }
+
+      h1 {
+        color: #14f700;
+        font-family: monospace;
+        justify-content: center;
+        align-items: center;
+        font-size: 45px;
+      }
+
+      #terminal {
+        width: 600px;
+        height: 400px;
+        border: 3px solid green;
+        overflow-x: hidden;
+        font-size: 30px;
+        line-height: 30px;
+        box-shadow: 10px 10px 25px 10px green;
+      }
+
+      .char {
+        display: inline-block;
+        color: #14f700;
+        text-shadow: green 2px 2px;
+        animation: blink 0.9s steps(1) infinite;
+      }
+
+      .space {
+        display: inline-block;
+        background: #14f700;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+
+        81%,
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>10print</h1>
+    </div>
+    <div id="terminal"></div>
+
+    <script>
+      function CHR$(n) {
+        return String.fromCharCode(n)
+      }
+
+      function animate() {
+        const existingCursor = document.querySelector(".space");
+        if (existingCursor) {
+          existingCursor.remove();
+        }
+        const num = 9585 + Math.round(Math.random())
+        const char = CHR$(num)
+        const span = document.createElement("span")
+        span.className = "char"
+        span.textContent = char
+
+        const space = document.createElement("span")
+        space.className = "space"
+        space.textContent = ""
+
+        const terminal = document.getElementById("terminal")
+        terminal.appendChild(span)
+        terminal.appendChild(space)
+
+        terminal.scrollTop = terminal.scrollHeight
+      }
+
+      setInterval(animate, 100)
+    </script>
+  </body>
+</html>
