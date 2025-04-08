@@ -5,7 +5,8 @@
     <title>10PRINT Remix</title>
     <style>
       body {
-        position: flex;
+        display: flex;
+        flex-direction: column;
         margin: 0;
         background: black;
         justify-content: center;
@@ -18,13 +19,7 @@
       h1 {
         color: #14f700;
         font-family: monospace;
-        justify-content: center;
-        align-items: center;
         font-size: 40px;
-      }
-      
-      #header {
-        position: flex;
       }
       
       #terminal {
@@ -37,7 +32,7 @@
         box-shadow: 10px 10px 25px 10px green;
       }
 
-      .char {
+      .character {
         display: inline-block;
         color: #14f700;
         text-shadow: green 2px 2px;
@@ -52,12 +47,17 @@
       @keyframes blink {
         0%,
         50% {
-          opacity: 1;
+          opacity: 1
+        }
+        
+        51%,
+        80% {
+          opacity: 0.5
         }
 
         81%,
         100% {
-          opacity: 0;
+          opacity: 0
         }
       }
     </style>
@@ -74,14 +74,14 @@
       }
 
       function animate() {
-        const existingCursor = document.querySelector(".space");
-        if (existingCursor) {
-          existingCursor.remove();
+        const exist = document.querySelector(".space")
+        if (exist) {
+          exist.remove()
         }
         const num = 9585 + Math.round(Math.random())
         const char = CHR$(num)
         const span = document.createElement("span")
-        span.className = "char"
+        span.className = "character"
         span.textContent = char
 
         const space = document.createElement("span")
